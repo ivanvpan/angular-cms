@@ -1,0 +1,10 @@
+<div class="navbar">
+    <div class="navbar-inner">
+        <form class="navbar-search" ng-submit="search">
+            <input type="text" class="search-query"
+                   ng-model="query" placeholder="Search" size="30">
+        </form>
+        <a ng-repeat="button in buttons" class="btn pull-right create-btn"
+           href="{{button.href}}" data-toggle="{{button.dataToggle}}" data-target="{{button.dataTarget}}">{{button.label}}</a>
+    </div>
+</div>

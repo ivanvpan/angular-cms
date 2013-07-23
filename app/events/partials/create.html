@@ -1,0 +1,32 @@
+<ul class="breadcrumb">
+    <li><a href="#/events">Events</a><span class="divider">/</span></li>
+    <li class="active">Create Event</li>
+</ul>
+
+<div class="row">
+
+    <!-- Tabbed Column ----------------------------------------------------- -->
+
+    <div class="span9">
+        <form fn-forms onsave="create" name="formCreate" class="css-form form-horizontal" ng-cloak>
+            <fieldset>
+                <div fn-forms-input="text" label="Songkick URL"
+                     ng-model="form.songkick"></div>
+
+                <div fn-forms-input="text" label="Name"
+                     ng-model="form.name"></div>
+
+                <div fn-forms-input="datetime" label="Date"
+                     ng-model="form.start"></div>
+
+                <div fn-forms-actions ng-model="form"></div>
+            </fieldset>
+        </form>
+    </div>
+
+    <!-- Action Column ----------------------------------------------------- -->
+
+    <div class="span3">
+    </div>
+
+</div>

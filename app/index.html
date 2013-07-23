@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="en" ng-app="cms">
+<head>
+    <meta charset="utf-8">
+    <title>Fuse CMS</title>
+    <script src="./fn/lib/underscore.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+    <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script> -->      <!-- 1.7.2 needed for Wymeditor -->
+    <!-- <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/jquery-ui.min.js"></script> --> <!-- 1.8.21 needed for Fileupload -->
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
+    <!-- <script src="./fn/lib/jquery/jquery-ui-1.10.3.custom.js"></script> -->
+    <script src="./fn/lib/angular/angular.js"></script>
+    <script src="./fn/lib/angular/angular-resource.js"></script>
+    <script src="./fn/lib/angular/angular-sanitize.js"></script>
+    <script src="./fn/lib/angular-ui/angular-ui.js"></script>
+    <script src="./fn/lib/bootstrap/bootstrap.js"></script>
+    <script src="./fn/lib/bootstrap/js/bootstrap-transition.js"></script>
+    <script src="./fn/lib/bootstrap/js/bootstrap-collapse.js"></script>
+    <script src="./fn/lib/jquery/bootstrap-notify.js"></script>
+    <script src="//maps.google.com/maps/api/js?sensor=true"></script>
+    <script src="./fn/lib/jquery/map/jquery.ui.map.js"></script>
+    <script src="./fn/lib/jquery/map/jquery.ui.map.services.js"></script>
+    <script src="./fn/lib/timezonejs/date.js"></script>
+    
+    <link rel="stylesheet" href="./fn/css/angular-ui.css">
+    <link rel="stylesheet" href="./fn/css/smoothness/jquery-ui-1.10.0.css">
+    <link rel="stylesheet" href="./fn/css/bootstrap.css">
+    <link rel="stylesheet" href="./fn/css/token-input-facebook.css">
+    <link rel="stylesheet" href="./fn/css/app.css">
+    <link rel="stylesheet" href="./fn/lib/redactor/redactor.css">
+    <!-- <link rel="stylesheet" href="./fn/lib/redactor/redactor-iframe.css"> -->
+    <link rel="stylesheet" href="./pages/css/app.css">
+    
+    <style type="text/css">
+        @font-face {
+            font-family: 'Pictos';
+            src: url('/fonts/pictos-web.eot');
+            src: local('���'), url('/manager/fonts/pictos-web.ttf') format('truetype'), url('/manager/fonts/pictos-web.woff') format('woff'), url('/manager/fonts/pictos-web.svg#webfontphKv1xv9') format('svg');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        .picto:before {
+            content: attr(data-icon);
+            font-family: Pictos;
+            line-height: 0;
+            padding: 0 4px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .picto_ud {
+            font-family: Pictos;
+            line-height: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1 {
+            font-size: 20px;
+            margin: 50px 0 0;
+            text-align: center;
+        }
+
+        p#updated {
+            color: #555;
+            text-align: center;
+        }
+
+        #status ul {
+            list-style: none;
+            margin: 50px 50px 0;
+            padding: 0;
+        }
+
+        #status ul li {
+            border-radius: 10px;
+            -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
+            display: none;
+            margin: 0 0 40px;
+            padding: 20px;
+            text-shadow: 0 -2px 0 rgba(0, 0, 0, 0.5)
+        }
+
+        #status ul li ul li:first-child {
+            border: none;
+        }
+
+        #status ul li ul {
+            margin: 0;
+        }
+
+        #status ul li ul li {
+            border-radius: 0;
+            border-top: 1px solid rgba(0, 0, 0, 0.2);
+            -webkit-box-shadow: none;
+            display: block;
+            font-size: 20px;
+            padding: 10px;
+            margin: 0;
+        }
+
+        #status h2 {
+            font-size: 20px;
+            font-weight: 200;
+            margin: 0;
+        }
+
+        #status h2 span {
+            font-weight: bold;
+        }
+
+        #content {
+            position: relative;
+            height: 704px;
+            overflow: hidden;
+            background: #151515;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, .15);
+            -webkit-border-radius: 10px;
+        }
+
+        .page {
+            position: absolute;
+            width: 100%;
+            border-bottom: 2px solid #333;
+            padding: 10px;
+            margin-bottom: 5px;
+            font-size: 15pt;
+            overflow: hidden;
+            height: 15px;
+            vertical-align: middle;
+            cursor: pointer;
+        }
+
+        .visitors {
+            width: 40px;
+            text-align: right;
+            display: inline-block;
+        }
+
+        .page .picto_ud {
+            width: 30px;
+            height: 55px;
+            text-align: center;
+            display: inline-block;
+        }
+
+        #time {
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 10px 10px 0 0;
+            border: solid rgba(0, 0, 0, 0.4);
+            border-width: 1px 1px 0;
+            bottom: 0;
+            -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+            display: none;
+            font-size: 35px;
+            left: 50%;
+            margin: 0 0 0 -100px;
+            padding: 5px 10px;
+            position: absolute;
+            text-align: center;
+            width: 200px;
+        }
+
+        #overview {
+            background: linear-gradient(top, #fcec58 0%, #f1da36 100%);
+            -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
+            color: #444;
+            font-size: 35px;
+            padding: 10px;
+            text-align: center;
+            text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+            line-height:1;
+        }
+
+        #overview ul {
+            position: relative;
+            list-style: none;
+            display: inline-block;
+            margin: 0;
+            padding: 0;
+            margin-right: -20px;
+        }
+
+        #overview li {
+            display: inline-block;
+            margin-right: 20px;
+        }
+
+        #overview ul li span {
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
+            font-size: 35px;
+            padding: 5px 10px;
+            text-align: center;
+        }
+
+        .down {
+            color: #ff4500;
+        }
+
+        .up {
+            color: #adff2f;
+        }
+    </style>
+
+</head>
+<body>
+    <div fn-base-navigation selected="Pages"></div>
+    <div class="container-wrap" ng-cloak>
+        <div class="container" ng-view></div>
+    </div>
+    
+    <div fn-notify></div>
+    
+    <!-- Redactor -->
+    <script src="./fn/lib/redactor/redactor.js"></script>
+    <!-- /Redactor -->
+
+    <!-- WYM -->
+    <!--
+    <script src="./fn/lib/jquery/redactor/jquery.wymeditor.js"></script>
+    <script src="./fn/lib/jquery/redactor/plugins/pastefromword/jquery.wymeditor.pastefromword.js"></script>
+    <script src="./fn/lib/jquery/redactor/plugins/resizable/jquery.wymeditor.resizable.js"></script>
+    -->
+    <!-- /WYM -->
+
+    <!-- TokenInput -->
+    <script src="./fn/lib/jquery/jquery.tokeninput.js"></script>
+    <script src="./fn/lib/jquery/jquery.tokeninput.js"></script>
+    <script src="./fn/lib/jquery/jquery.iframe-transport.js"></script>
+    <!-- /TokenInput -->
+
+    <!-- Fileupload -->
+    <script src="./fn/lib/tmpl.js"></script>
+    <script src="./fn/lib/load-image.js"></script>
+    <script src="./fn/lib/locale.js"></script>
+    <script src="./fn/lib/jquery/jquery.fileupload.js"></script>
+    <script src="./fn/lib/jquery/jquery.fileupload-fp.js"></script>
+    <script src="./fn/lib/jquery/jquery.fileupload-ui.js"></script>
+    <!-- /Fileupload -->
+    
+    <!-- Moment -->
+    <script src="./fn/lib/moment.js"></script>
+    <!-- /Moment -->
+
+    <!-- Embedly -->
+    <script src="./fn/lib/jquery/jquery.embedly.js"></script>
+    <script src="./fn/lib/jquery/jquery.contained-sticky-scroll.js"></script>
+    <!-- /Embedly -->
+
+    <!-- Base -->
+    <script src="./fn/modules/base/index.js"></script>
+    <script src="./fn/modules/base/filters/active.js"></script>
+    <script src="./fn/modules/base/filters/published.js"></script>
+    <script src="./fn/modules/base/filters/date.js"></script>
+    <script src="./fn/modules/base/directives/fileupload.js"></script>
+    <script src="./fn/modules/base/directives/imagemodal.js"></script>
+    <script src="./fn/modules/base/directives/collapse.js"></script>
+    <script src="./fn/modules/base/directives/pagination.js"></script>
+    <script src="./fn/modules/base/directives/navigation.js"></script>
+    <script src="./fn/modules/base/directives/searchbar.js"></script>
+    <script src="./fn/modules/base/directives/notify.js"></script>
+    <script src="./fn/modules/base/services/models.js"></script>
+    <script src="./fn/modules/base/services/timezones.js"></script>
+    <!-- /Base -->
+
+    <!-- Login -->
+    <div fn-login-modal></div>
+    <script src="./fn/modules/login/index.js"></script>
+    <script src="./fn/modules/login/services/auth.js"></script>
+    <script src="./fn/modules/login/services/permissions.js"></script>
+    <!-- /Login -->
+
+    <!-- Forms -->
+    <script src="./fn/modules/forms/index.js"></script>
+    <script src="./fn/modules/forms/directives/jqfield.js"></script>
+    <script src="./fn/modules/forms/directives/resourceinput.js"></script>
+    <script src="./fn/modules/forms/directives/datetime.js"></script>
+    <script src="./fn/modules/forms/directives/embedly.js"></script>
+    <script src="./fn/modules/forms/directives/tweet.js"></script>
+    <script src="./fn/modules/forms/directives/location.js"></script>
+    <script src="./fn/modules/forms/directives/redactor.js"></script>
+    <!-- /Forms -->
+
+    <!-- Artists -->
+    <script src="./artists/index.js"></script>
+    <!-- /Artists -->
+    
+    <!-- Assets -->
+    <script src="./assets/index.js"></script>
+    <!-- /Assets -->
+    
+    <!-- Contests -->
+    <script src="./contests/index.js"></script>
+    <!-- /Contests -->
+
+    <!-- Contributors -->
+    <script src="./contributors/index.js"></script>
+    <!-- /Contributors -->
+
+    <!-- Dashboard -->
+    <script src="./dashboard/index.js"></script>
+    <script src="./dashboard/directives/index.js"></script>
+    <!-- /Dashboard -->
+
+    <!-- Events -->
+    <script src="./events/index.js"></script>
+    <!-- /Events -->
+    
+    <!-- Festivals -->
+    <script src="./festivals/index.js"></script>
+    <script src="./festivals/directives/popover.js"></script>
+    <!-- /Festivals -->
+    
+    <!-- Frames -->
+    <script src="./frames/index.js"></script>
+    <!-- /Frames -->
+    
+    <!-- Lists -->
+    <script src="./lists/index.js"></script>
+    <script src="./lists/directives/contentitem.js"></script>
+    <!-- /Lists -->
+    
+    <!-- Pages -->
+    <script src="./pages/index.js"></script>
+    <script src="./pages/directives/toolbox.js"></script>
+    <script src="./pages/directives/contentitem.js"></script>
+    <!-- /Pages -->
+    
+    <!-- Polls -->
+    <script src="./polls/index.js"></script>
+    <script src="./polls/directives/choice.js"></script>
+    <!-- /Polls -->
+    
+    <!-- Quizzes -->
+    <script src="./quizzes/index.js"></script>
+    <script src="./quizzes/directives/answer.js"></script>
+    <script src="./quizzes/directives/question.js"></script>
+    <script src="./quizzes/directives/result.js"></script>
+    <!-- /Quizzes -->
+    
+    <!-- Shows -->
+    <script src="./shows/index.js"></script>
+    <!-- /Shows -->
+    
+    <!-- Spotify -->
+    <script src="./spotify/index.js"></script>
+    <!-- /Spotify -->
+    
+    <!-- Tags -->
+    <script src="./tags/index.js"></script>
+    <!-- /Tags -->
+    
+    <!-- Ticker -->
+    <script src="./ticker/index.js"></script>
+    <!-- /Ticker -->
+    
+    <!-- Topics -->
+    <script src="./topics/index.js"></script>
+    <!-- /Topics -->
+    
+    <!-- Trending10 -->
+    <script src="./trending10/index.js"></script>
+    <script src="./trending10/directives/contentitem.js"></script>
+    <!-- /Trending10 -->
+    
+    <!-- Users -->
+    <script src="./users/index.js"></script>
+    <!-- /Users -->
+    
+    <!-- Venues -->
+    <script src="./venues/index.js"></script>
+    <!-- /Venues -->
+
+    <script src="./index.js"></script>
+
+    <script type="text/javascript">
+        window.twttr = (function (d,s,id) { var t, js, fjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) return; js=d.createElement(s); js.id=id; js.src="//platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); t = { _e: [], ready: function(f){ t._e.push(f) } }; return _.extend({}, (window.twttr || {}), t);}(document, "script", "twitter-wjs"));
+    </script>
+
+    <script>
+
+    </script>
+
+</body>
+</html>

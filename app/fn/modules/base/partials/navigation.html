@@ -1,0 +1,20 @@
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <ul class="nav">
+                <li ng-repeat="link in links" ng-class="getClass(link)"><a href="{{link.route}}">{{link.title.toUpperCase()}}</a></li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" href='#' data-toggle='dropdown'>
+                        MORE<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li ng-repeat="d in drop" ng-class="getClass(d)"><a href="{{d.route}}">{{d.title}}</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="nav pull-right">
+              <div fn-login-toolbar></div>
+            </ul>
+        </div>
+    </div>
+</div>

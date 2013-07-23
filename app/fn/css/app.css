@@ -1,0 +1,286 @@
+/* app css stylesheet */
+ng-cloak,
+[ng-cloak],
+.ng-cloak {
+  display: none;
+}
+body {
+  padding: 40px 0;
+  background-color: #EEEEEE;
+}
+a {
+  color: black;
+}
+.container-wrap {
+  background: none repeat scroll 0 0 #FFFFFF;
+  border-radius: 0 0 10px 10px;
+  margin: 0 auto;
+  width: 980px;
+}
+.container-wrap > .container {
+  padding-top: 20px;
+}
+.text-left {
+  text-align: left !important;
+}
+.text-center {
+  text-align: center !important;
+}
+.text-right {
+  text-align: right !important;
+}
+table tr td .title {
+  margin-bottom: 4px;
+}
+table tr td .path {
+  color: #CCCCCC;
+}
+.menu {
+  list-style: none;
+  border-bottom: 0.1em solid black;
+  margin-bottom: 2em;
+  padding: 0 0 0.5em;
+}
+.menu:before {
+  content: "[";
+}
+.menu:after {
+  content: "]";
+}
+.menu > li {
+  display: inline;
+}
+.menu > li:before {
+  content: "|";
+  padding-right: 0.3em;
+}
+.menu > li:nth-child(1):before {
+  content: "";
+  padding: 0;
+}
+.control-group .controls {
+  overflow: hidden;
+}
+.control-group .controls .btn {
+  margin-right: 5px;
+}
+ul.token-input-list-facebook {
+  width: 380px;
+  margin-left: 0;
+  border-radius: 4px 4px 4px 4px;
+  color: #555555;
+  font-size: 14px;
+  height: 20px;
+  line-height: 20px;
+  background-color: #FFFFFF;
+  border: 1px solid #CCCCCC;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+  transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
+  display: inline-block;
+  margin-bottom: 0;
+  vertical-align: middle;
+}
+div.token-input-dropdown-facebook {
+  width: 380px;
+}
+.fn-forms-actions {
+  background-color: #F5F5F5;
+  border-top: 1px solid #E3E3E3;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
+  margin-bottom: 20px;
+  min-height: 20px;
+  padding: 20px 0;
+}
+.modal.resource-picker {
+  width: 990px;
+}
+.modal.resource-picker .pagination {
+  margin: 0;
+}
+.modal.resource-picker .modal-body {
+  max-height: 570px;
+  overflow: hidden;
+}
+.modal.resource-picker ul.thumbnails {
+  height: 480px;
+  overflow-y: auto;
+}
+.modal.resource-picker ul.thumbnails li.thumbnail {
+  height: 130px;
+  overflow: hidden;
+  position: relative;
+  width: 210px;
+}
+.modal.resource-picker ul.thumbnails li.thumbnail.empty {
+  background-color: #ddd;
+}
+.modal.resource-picker ul.thumbnails li.thumbnail.empty img {
+  display: none;
+}
+.modal.resource-picker ul.thumbnails li.thumbnail.selected {
+  border-color: #08c;
+}
+.modal.resource-picker ul.thumbnails li.thumbnail .caption {
+  bottom: 5px;
+  color: white;
+  position: absolute;
+  background: rgba(0, 0, 0, 0.1);
+}
+.modal.resource-picker ul.thumbnails li.thumbnail img {
+  width: 210px;
+}
+.control-group.error .asset-field .noitem {
+  color: #B94A48;
+}
+.asset-field .noitem {
+  font-weight: bold;
+  padding-top: 6px;
+}
+.asset-field .thumbnail {
+  height: 130px;
+  overflow: hidden;
+  position: relative;
+  width: 210px;
+}
+.asset-field .thumbnail.empty {
+  background-color: #ddd;
+}
+.asset-field .thumbnail.empty img {
+  display: none;
+}
+.asset-field .thumbnail img {
+  height: 130px;
+  width: 210px;
+}
+.asset-field .thumbnail .caption {
+  bottom: 5px;
+  color: white;
+  position: absolute;
+  background: rgba(0, 0, 0, 0.1);
+}
+[ng-app="assets"] .thumbnails {
+  min-height: 920px;
+}
+[ng-app="assets"] .thumbnails .thumbnail {
+  height: 130px;
+  position: relative;
+}
+[ng-app="assets"] .thumbnails .thumbnail .caption {
+  overflow: hidden;
+  position: absolute;
+  bottom: 5px;
+  color: white;
+  background: rgba(0, 0, 0, 0.1);
+  width: 192px;
+}
+[ng-app="assets"] .thumbnails .thumbnail .caption span {
+  text-shadow: 1px 1px 5px #000;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 1;
+}
+.assets.thumbnails {
+  min-height: 920px;
+}
+.assets.thumbnails .asset.thumbnail {
+  height: 130px;
+  position: relative;
+}
+.assets.thumbnails .asset.thumbnail .caption {
+  overflow: hidden;
+  position: absolute;
+  bottom: 5px;
+  color: white;
+  background: rgba(0, 0, 0, 0.1);
+  width: 192px;
+}
+.assets.thumbnails .asset.thumbnail .caption span {
+  text-shadow: 1px 1px 5px #000;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 1;
+}
+.hasDatepicker {
+  width: 80px !important;
+}
+[fn-forms-datetime] .hasDatepicker,
+[fn-forms-datetime] .dp-ampm {
+  margin-right: 10px;
+}
+[fn-forms-datetime] select {
+  width: 60px !important;
+}
+[fn-forms-datetime] select.dp-mins {
+  margin-right: 2px;
+}
+.tool-list li a {
+  color: #0088CC;
+  cursor: pointer;
+}
+.placeholder {
+  border: 1px dashed #cccccc;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  position: relative;
+  width: 100%;
+  height: 118px;
+  margin: 5px 0;
+}
+.placeholder > li {
+  list-style: none;
+}
+.placeholder > a {
+  list-style: none;
+}
+.trending10-tweets .tweet {
+  position: relative;
+}
+.trending10-tweets .tweet .text {
+  margin-top: 5px;
+  min-height: 40px;
+}
+.trending10-tweets .tweet .tweet-container {
+  margin-left: 60px;
+}
+.trending10-tweets .tweet img {
+  float: left;
+}
+.trending10-tweets .tweet .time a,
+.trending10-tweets .time {
+  color: #ccc;
+}
+.trending10-tweets .tweet .username {
+  font-weight: bold;
+  font-size: 16px;
+}
+.trending10-tweets .tweet .text-sidebar {
+  height: 15px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-bottom: 5px;
+  margin-right: 30px;
+}
+.trending10-tweets .tweet .btn-danger {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.trending10-tweets .tweet:hover .btn-danger {
+  display: block;
+}
+.no-transition {
+  -webkit-transition: height 0.001s;
+  -moz-transition: height 0.001s;
+  -ms-transition: height 0.001s;
+  -o-transition: height 0.001s;
+  transition: height 0.001s;
+}
+.no-label .control-label {
+    width: 0px;
+}
+.no-label .controls {
+    margin-left: 0px;
+}

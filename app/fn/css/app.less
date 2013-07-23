@@ -1,0 +1,382 @@
+/* app css stylesheet */
+
+
+// Angular Specific
+//------------------------------------------------------------------------------
+
+ng-cloak, [ng-cloak], .ng-cloak {
+    display: none;
+}
+
+ng-invalid {
+
+}
+
+// Application Shell
+//------------------------------------------------------------------------------
+
+body {
+    padding: 40px 0;
+    background-color: #EEEEEE;
+}
+
+a { color: black; }
+
+.container-wrap {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border-radius: 0 0 10px 10px;
+    margin: 0 auto;
+    width: 980px;
+
+    > .container {
+        padding-top: 20px;
+    }
+}
+
+.text-left   { text-align: left !important; }
+.text-center { text-align: center !important; }
+.text-right  { text-align: right !important; }
+
+// Tabled Lists
+//------------------------------------------------------------------------------
+
+table {
+    tr {
+        td {
+            .title {
+                margin-bottom: 4px;
+            }
+            .path {
+                color: #CCCCCC;
+            }
+        }
+    }
+}
+
+// Navigation Menu
+//------------------------------------------------------------------------------
+
+.menu {
+    list-style: none;
+    border-bottom: 0.1em solid black;
+    margin-bottom: 2em;
+    padding: 0 0 0.5em;
+
+    &:before { content: "["; }
+    &:after  { content: "]"; }
+
+    > li {
+        display: inline;
+    }
+
+    > li:before {
+        content: "|";
+        padding-right: 0.3em;
+    }
+
+    > li:nth-child(1):before {
+        content: "";
+        padding: 0;
+    }
+}
+
+// Bootstrap Form Controls
+//------------------------------------------------------------------------------
+
+.control-group .controls {
+    overflow: hidden;
+}
+
+.control-group .controls .btn {
+    margin-right: 5px;
+}
+
+// Token Input - Facebook Theme Overrides
+//------------------------------------------------------------------------------
+
+ul.token-input-list-facebook {
+    width: 380px;
+
+    margin-left: 0;
+
+    border-radius: 4px 4px 4px 4px;
+    color: #555555;
+    font-size: 14px;
+    height: 20px;
+    line-height: 20px;
+    //padding: 4px 6px;
+
+    background-color: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+    transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
+
+    display: inline-block;
+    margin-bottom: 0;
+    vertical-align: middle;
+}
+
+div.token-input-dropdown-facebook {
+    width: 380px;
+}
+
+// CMS Form Controls
+//------------------------------------------------------------------------------
+
+.fn-forms-actions {
+    background-color: #F5F5F5;
+    border-top: 1px solid #E3E3E3;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
+    margin-bottom: 20px;
+    min-height: 20px;
+    padding: 20px 0;
+}
+
+// Resource Picker Modal
+//------------------------------------------------------------------------------
+
+.modal.resource-picker {
+    width: 990px;
+
+    .pagination {
+        margin: 0;
+    }
+
+    .modal-body {
+        max-height: 570px;
+        overflow: hidden;
+    }
+    ul.thumbnails {
+        height: 480px;
+        overflow-y: auto;
+
+        li.thumbnail {
+            height: 130px;
+            overflow: hidden;
+            position: relative;
+            width: 210px;
+
+            &.empty {
+                background-color: #ddd;
+                img {
+                    display: none;
+                }
+            }
+
+            &.selected {
+                border-color: #08c;
+            }
+
+            .caption {
+                bottom: 5px;
+                color: white;
+                position: absolute;
+                background: rgba(0,0,0,0.1);
+            }
+
+            img {
+                width: 210px;
+            }
+        }
+    }
+}
+
+// Asset Picker
+//------------------------------------------------------------------------------
+
+.control-group.error {
+    .asset-field {
+        .noitem {
+            color: #B94A48;
+        }
+    }
+}
+
+.asset-field {
+    .noitem {
+        font-weight: bold;
+        padding-top: 6px;
+    }
+
+    .thumbnail {
+        height: 130px;
+        overflow: hidden;
+        position: relative;
+        width: 210px;
+
+        &.empty {
+            background-color: #ddd;
+            img {
+                display: none;
+            }
+        }
+
+        img {
+            height: 130px;
+            width: 210px;
+        }
+
+        .caption {
+            bottom: 5px;
+            color: white;
+            position: absolute;
+            background: rgba(0,0,0,0.1);
+        }
+    }
+}
+
+
+// Assets Page
+//------------------------------------------------------------------------------
+
+[ng-app="assets"] {
+    .thumbnails {
+        min-height: 920px;
+        .thumbnail {
+            height: 130px;
+            position: relative;
+            .caption {
+                overflow: hidden;
+                position: absolute;
+                bottom: 5px;
+                color: white;
+                background: rgba(0,0,0,0.1);
+                width: 192px;
+                span {
+                    text-shadow: 1px 1px 5px #000;
+                    font-weight: normal;
+                    font-size: 14px;
+                    line-height: 1;
+                }
+            }
+        }
+    }
+}
+.assets.thumbnails {
+    min-height: 920px;
+    .asset.thumbnail {
+        height: 130px;
+        position: relative;
+        .caption {
+            overflow: hidden;
+            position: absolute;
+            bottom: 5px;
+            color: white;
+            background: rgba(0,0,0,0.1);
+            width: 192px;
+            span {
+                text-shadow: 1px 1px 5px #000;
+                font-weight: normal;
+                font-size: 14px;
+                line-height: 1;
+            }
+        }
+    }
+
+
+// Datepicker
+//------------------------------------------------------------------------------
+
+// Date Picker alone
+.hasDatepicker {
+  width: 80px !important;
+}
+
+// Date and Time Picker
+[fn-forms-datetime] {
+    .hasDatepicker, .dp-ampm {
+        margin-right: 10px;
+    }
+    select {
+        width: 60px !important;
+    }
+    select.dp-mins {
+        margin-right: 2px;
+    }
+}
+
+// Pages
+//------------------------------------------------------------------------------
+
+.tool-list li a {
+    color: #0088CC;
+    cursor: pointer;
+}
+
+// Content Item Sortable Placeholder
+//------------------------------------------------------------------------------
+.border-radius(@radius: 5px) {
+    -webkit-border-radius: @radius;
+    -moz-border-radius: @radius;
+    border-radius: @radius;
+}
+.placeholder {
+    border: 1px dashed rgb(204, 204, 204);
+    .border-radius(4px);
+    position: relative;
+    width: 100%;
+    height: 118px;
+    margin: 5px 0;
+    > li {
+        list-style: none;
+    }
+}
+
+// Trending 10 Favorite Tweets
+//------------------------------------------------------------------------------
+.trending10-tweets {
+    .tweet {
+        position: relative;
+    }
+    .tweet .text {
+        margin-top: 5px;
+        min-height: 40px;
+    }
+    .tweet .tweet-container {
+        margin-left: 60px;
+    }
+    .tweet img {
+        float:left;
+    }
+    .tweet .time a, .time {
+        color: #ccc;
+    }
+    .tweet .username {
+        font-weight: bold;
+        font-size: 16px;
+    }
+    .tweet .text-sidebar {
+        height: 15px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        margin-bottom: 5px;
+        margin-right: 30px;
+    }
+    .tweet .btn-danger {
+        display:none;
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+    .tweet:hover .btn-danger {
+        display:block;
+    }
+}
+
+// No-transition styling for collapse and show all (performance reasons for large number of items)
+.no-transition {
+  -webkit-transition: height 0.001s;
+  -moz-transition: height 0.001s;
+  -ms-transition: height 0.001s;
+  -o-transition: height 0.001s;
+  transition: height 0.001s;
+}
+
+// Redactor styling for Text Component
+.no-label .control-label {
+    width: 0px;
+}
+.no-label .controls {
+    margin-left: 0px;
+}

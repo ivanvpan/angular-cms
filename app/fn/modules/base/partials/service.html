@@ -1,0 +1,7 @@
+<p>Service View</p>
+<table class="table table-striped table-bordered">
+    <tr ng-repeat="result in json.results">
+        <td><a href="#/{{resource}}/{{result._id}}">{{result.title}}</a></td>
+    </tr>
+</table>
+<pagination num-pages="json.numPages" current-page="json.page"></pagination>

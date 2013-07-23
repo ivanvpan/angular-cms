@@ -1,0 +1,79 @@
+<ul class="breadcrumb">
+    <li><a href="#/events">Events</a><span class="divider">/</span></li>
+    <li class="active">{{form.name}}</li>
+</ul>
+
+<div class="row">
+
+    <!-- Tabbed Column ----------------------------------------------------- -->
+
+    <div class="span9">
+
+        <form fn-forms onload="load" onsave="save" name="formEdit" class="css-form form-horizontal" ng-cloak>
+            <fieldset>
+                <div fn-forms-input="select" label="Type"
+                     ng-model="form.type" options="type_list"></div>
+
+                <div fn-forms-input="text" label="Name"
+                     ng-model="form.name"></div>
+
+                <div fn-forms-input="textarea" label="Description"
+                     ng-model="form.description"></div>
+
+                <hr>
+
+                <div fn-forms-input="text" label="Location"
+                     ng-model="form.location"></div>
+
+<!--
+                <div class="control-group">
+                    <div class="controls">
+                        <div id="map-canvas" style="height:300px;width:460px;"></div>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <div class="controls">
+                        <input class="location" type='text' value=''>
+                        <a class="btn" id="update-geo" href='#' style='margin-left:10px'>Update Location</a>
+                    </div>
+                </div>
+-->
+                <div fn-forms-input="location" label="Location"
+                     ng-model="form.geo" disabled="false"></div>
+
+                <div fn-forms-input="text" label="Longitute"
+                     ng-model="form.geo.longitude" disabled="true"></div>
+
+                <div fn-forms-input="text" label="Latitude"
+                     ng-model="form.geo.latitude" disabled="true"></div>
+
+                <hr>
+
+                <div fn-forms-input="datetime" label="Start Date"
+                     ng-model="form.start"></div>
+
+                <div fn-forms-input="datetime" label="End Date"
+                     ng-model="form.end"></div>
+
+                <div fn-forms-actions ng-model="form"></div>
+            </fieldset>
+        </form>
+    </div>
+
+    <!-- Action Column ------------------------------------------------------->
+
+    <div class="span3">
+        <div class="well">
+            <h6 class="muted">Status&nbsp;<span class="label {{form.active|publishedClass}}">{{form.active|published}}</span></h6>
+            <div class="btn-toolbar">
+                <a class="btn btn-small" href="#/events/event/{{form._id}}" ng-click="activate()">{{form.active|activate}}</a>
+            </div>
+        </div>
+        <div class="well alert-message block-message error"><a
+                class="btn confirm-modal btn-danger"
+                href="#/events/event/{{form._id}}" ng-click="removeForm()">Remove</a>
+        </div>
+    </div>
+
+</div>

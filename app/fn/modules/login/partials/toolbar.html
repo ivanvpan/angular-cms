@@ -1,0 +1,20 @@
+<span>
+  <ul class="nav pull-right" style="margin-right: 10px">
+    <li ng-show="!auth.isLoggedIn()">
+      <form class="navbar-form">
+        <a class="btn" href="#" ng-click="auth.loginRequired('user-request')">login</a>
+      </form>
+    </li>
+    <li class="dropdown" ng-show="auth.isLoggedIn()">
+      <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+        {{auth.getUser().email}}
+        <b class="caret"></b>
+      </a>
+      <ul class="dropdown-menu">
+          <li><a href="/manager/account">Change Password</a></li>
+          <li class="divider"></li>
+          <li><a href="#" ng-click="auth.logout()">Logout</a></li>
+      </ul>
+    </li>
+  </ul>
+</span>
